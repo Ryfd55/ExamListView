@@ -9,12 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamListView">
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@layout/activity_simple_list_view" />
 
         <activity
             android:name=".SimpleAdapterActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@layout/activity_simple_list_view" />
+        <activity
+            android:name=".ArrayAdapterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
