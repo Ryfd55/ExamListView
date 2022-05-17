@@ -1,11 +1,13 @@
 package com.hfad.examlistview
 
 import android.R
+import android.content.Context
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.hfad.examlistview.databinding.ActivityListViewBinding
 import com.hfad.examlistview.databinding.DialogAddCharacterBinding
 import java.util.*
@@ -16,6 +18,8 @@ class ArrayAdapterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityListViewBinding.inflate(layoutInflater).also { setContentView(it.root) }
+        binding.addButton2.setOnClickListener { onBackButtonPressed() }
 
         binding = ActivityListViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -24,6 +28,10 @@ class ArrayAdapterActivity : AppCompatActivity() {
 
         setupListWithArrayAdapter()
         binding.addButton.setOnClickListener { onAddPressed() }
+    }
+    private fun onBackButtonPressed() {
+        val intent = Intent(this@ArrayAdapterActivity, SimpleAdapterActivity::class.java)
+        startActivity(intent)
     }
     private fun setupListWithArrayAdapter() {
         val data = mutableListOf(
